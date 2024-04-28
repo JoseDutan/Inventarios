@@ -1,0 +1,18 @@
+package com.krakedev.inventarios.servicios;
+
+public class ServiciosTipoDocumento {
+	@Path("recuperar")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response recuperar(String subcadena) {
+		TiposDocumentoBDD docBDD = new TiposDocumentoBDD();
+		ArrayList<TipoDocumento> documentos = null;
+		try {
+			documentos = docBDD.recuparar(subcadena);
+			return Response.ok(documentos).build();
+		} catch (KrakeDevException e) {
+			e.printStackTrace();
+			return Response.serverError().build();
+		}
+	}
+}

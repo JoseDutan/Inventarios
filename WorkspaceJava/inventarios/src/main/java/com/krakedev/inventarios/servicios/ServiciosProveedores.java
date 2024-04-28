@@ -2,7 +2,9 @@ package com.krakedev.inventarios.servicios;
 
 import java.util.ArrayList;
 
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -11,9 +13,9 @@ import javax.ws.rs.core.Response;
 
 import com.krakedev.inventarios.bdd.ProveedoresBDD;
 import com.krakedev.inventarios.entidades.Proveedor;
-import com.krakedev.inventarios.entidades.TipoDocumento;
 import com.krakedev.inventarios.excepciones.KrakeDevException;
-@Path("tiposdocumento")
+
+@Path("proveedores")
 public class ServiciosProveedores {
 	
 	@Path("buscar/{sub}")
@@ -31,38 +33,17 @@ public class ServiciosProveedores {
 		}
 	}
 	
-	@Path("recuperar")
-	@GET
-	@Produces(MediaType.APPLICATION_JSON)
-	public Response recuperar() {
-		ProveedoresBDD docBDD = new ProveedoresBDD();
-		ArrayList<TipoDocumento> documentos = null;
+	@Path("crear")
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response crear(Proveedor proveedor) {
+		ProveedoresBDD provBDD = new ProveedoresBDD();
 		try {
-			documentos = docBDD.recuparar();
-			return Response.ok(documentos).build();
+			provBDD.insertar(proveedor);
+			return Response.ok().build();
 		} catch (KrakeDevException e) {
 			e.printStackTrace();
 			return Response.serverError().build();
 		}
 	}
 }
-
-
-/*@Path("tipodocumento")
-public class ServiciosProveedores {
-
-	@Path("recuperar")
-	@GET
-	@Produces(MediaType.APPLICATION_JSON)
-	public Response recuperar(String subcadena) {
-		TiposDocumentoBDD docBDD = new TiposDocumentoBDD();
-		ArrayList<TipoDocumento> documentos = null;
-		try {
-			documentos = docBDD.recuparar(subcadena);
-			return Response.ok(documentos).build();
-		} catch (KrakeDevException e) {
-			e.printStackTrace();
-			return Response.serverError().build();
-		}
-	}
-}*/
