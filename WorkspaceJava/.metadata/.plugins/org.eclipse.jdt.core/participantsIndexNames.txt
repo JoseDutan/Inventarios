@@ -1,3 +1,5 @@
 INDEX VERSION 1.134
+/Users/josedutan/Documents/Programacion Nivelacion/MODULO 3/Inventario/WorkspaceJava/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/116379615.index
+/inventarios/src/main/java
 /Users/josedutan/Documents/Programacion Nivelacion/MODULO 3/WorkspaceJava/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/116379615.index
 /inventarios/src/main/java
