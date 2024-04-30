@@ -1,0 +1,11 @@
+package com.krakedev.inventarios.entidades;
+
+import java.util.Date;
+
+public class HistorialStock {
+	private int codigo;
+	private Date fechaActual;
+	private String referencia;
+	private int producto;
+	private int cantidad;
+}
