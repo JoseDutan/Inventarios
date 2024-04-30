@@ -1,2 +1,33 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="com.krakedev.inventarios.entidades.TipoDocumento"/>
+    <fullyQualifiedTypeName name="javax.ws.rs.core.MediaType"/>
+    <fullyQualifiedTypeName name="javax.ws.rs.POST"/>
+    <fullyQualifiedTypeName name="com.krakedev.inventarios.bdd.ProveedoresBDD"/>
+    <fullyQualifiedTypeName name="com.krakedev.inventarios.entidades.CategoriaUDM"/>
+    <fullyQualifiedTypeName name="com.krakedev.inventarios.entidades.UnidadDeMedida"/>
+    <fullyQualifiedTypeName name="com.krakedev.inventarios.entidades.Categoria"/>
+    <fullyQualifiedTypeName name="com.krakedev.inventarios.bdd.ProductosBDD"/>
+    <fullyQualifiedTypeName name="com.krakedev.inventarios.entidades.Proveedor"/>
+    <fullyQualifiedTypeName name="com.krakedev.inventarios.entidades.EstadoPedido"/>
+    <fullyQualifiedTypeName name="com.krakedev.inventarios.servicios.PedidosBDD"/>
+    <fullyQualifiedTypeName name="com.krakedev.inventarios.excepciones.KrakeDevException"/>
+    <fullyQualifiedTypeName name="java.sql.Connection"/>
+    <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+    <fullyQualifiedTypeName name="com.krakedev.inventarios.utils.ConexionBDD"/>
+    <fullyQualifiedTypeName name="java.util.Date"/>
+    <fullyQualifiedTypeName name="java.sql.Date"/>
+    <fullyQualifiedTypeName name="java.beans.Statement"/>
+    <fullyQualifiedTypeName name="java.sql.Statement"/>
+    <fullyQualifiedTypeName name="java.sql.ResultSet"/>
+    <fullyQualifiedTypeName name="com.krakedev.inventarios.bdd.PedidosBDD"/>
+    <fullyQualifiedTypeName name="javax.ws.rs.Path"/>
+    <fullyQualifiedTypeName name="javax.ws.rs.GET"/>
+    <fullyQualifiedTypeName name="javax.ws.rs.Consumes"/>
+    <fullyQualifiedTypeName name="javax.ws.rs.core.Response"/>
+    <fullyQualifiedTypeName name="com.krakedev.inventarios.entidades.Pedido"/>
+    <fullyQualifiedTypeName name="com.krakedev.inventarios.entidades.Producto"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="com.krakedev.inventarios.entidades.DetallePedido"/>
+    <fullyQualifiedTypeName name="java.math.BigDecimal"/>
+</qualifiedTypeNameHistroy>
