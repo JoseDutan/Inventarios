@@ -1,0 +1,87 @@
+package com.krakedev.inventarios.bdd;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import com.krakedev.inventarios.entidades.Categoria;
+import com.krakedev.inventarios.excepciones.KrakeDevException;
+import com.krakedev.inventarios.utils.ConexionBDD;
+
+public class ServiciosVariosBDD {
+	public void insertar(Categoria categoria) throws KrakeDevException {
+		Connection con = null;
+		PreparedStatement ps = null;
+
+		try {
+			con = ConexionBDD.obtenerConexion();
+			ps = con.prepareStatement("insert into categorias(nombre, categoria_padre) " + " values(?, ?);");
+
+			ps.setString(1, categoria.getNombre());
+			ps.setInt(2, categoria.getCategoriaPadre().getCodigo());
+
+			ps.executeUpdate();
+
+		} catch (KrakeDevException e) {
+			e.printStackTrace();
+			throw e;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new KrakeDevException("Error al insertar Categoria. Detalle: " + e.getMessage());
+		}
+	}
+
+	public void actualizar(Categoria categoria) throws KrakeDevException {
+		Connection con = null;
+		PreparedStatement ps = null;
+
+		try {
+			con = ConexionBDD.obtenerConexion();
+			ps = con.prepareStatement("Update categorias set nombre = ?, categoria_padre = ? where codigo = ?");
+
+			ps.setString(1, categoria.getNombre());
+			ps.setInt(2, categoria.getCategoriaPadre().getCodigo());
+			ps.setInt(3, categoria.getCodigo());
+
+			ps.executeUpdate();
+
+		} catch (KrakeDevException e) {
+			e.printStackTrace();
+			throw e;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new KrakeDevException("Error al insertar Categoria. Detalle: " + e.getMessage());
+		}
+	}
+
+	public ArrayList<Categoria> buscar() throws KrakeDevException {
+		ArrayList<Categoria> categorias = new ArrayList<Categoria>();
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		Categoria categoria;
+
+		try {
+			con = ConexionBDD.obtenerConexion();
+			ps = con.prepareStatement("select codigo_cat, nombre, categoria_padre from categorias");
+
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				int codigo = rs.getInt("codigo");
+				String nombre = rs.getString("nombre");
+				Categoria categoriaPadre = new Categoria();
+				categoria = new Categoria(codigo, nombre, categoriaPadre);
+				categorias.add(categoria);
+			}
+		} catch (KrakeDevException e) {
+			e.printStackTrace();
+			throw e;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new KrakeDevException("Error al insertar Categoria. Detalle: " + e.getMessage());
+		}
+		return categorias;
+	}
+}
