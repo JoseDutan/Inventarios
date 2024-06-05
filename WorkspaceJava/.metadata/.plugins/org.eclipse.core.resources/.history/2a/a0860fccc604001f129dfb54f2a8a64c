@@ -1,9 +1,0 @@
-package com.krakedev.inventarios.servicios;
-
-import java.util.ArrayList;
-
-import com.krakedev.inventarios.entidades.Proveedor;
-
-public class ServiciosProveedores {
-	public ArrayList<Proveedor> buscar (String subcadena);
-}

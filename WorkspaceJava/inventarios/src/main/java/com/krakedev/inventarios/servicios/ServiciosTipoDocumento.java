@@ -2,7 +2,9 @@ package com.krakedev.inventarios.servicios;
 
 import java.util.ArrayList;
 
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
@@ -24,6 +26,19 @@ public class ServiciosTipoDocumento {
 		try {
 			documentos = docBDD.recuperar();
 			return Response.ok(documentos).build();
+		} catch (KrakeDevException e) {
+			e.printStackTrace();
+			return Response.serverError().build();
+		}
+	}
+	@Path("agregar")
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response agregar(TipoDocumento td) {
+		TipoDocumentoBDD docBDD = new TipoDocumentoBDD();
+		try {
+				docBDD.insertar(td);
+			return Response.ok().build();
 		} catch (KrakeDevException e) {
 			e.printStackTrace();
 			return Response.serverError().build();

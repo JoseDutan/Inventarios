@@ -25,7 +25,7 @@ public class TipoDocumentoBDD {
 			while (rs.next()) {
 				String codigo = rs.getString("codigo");
 				String descripcion = rs.getString("descripcion");
-				
+
 				documento = new TipoDocumento(codigo, descripcion);
 				documentos.add(documento);
 			}
@@ -37,5 +37,24 @@ public class TipoDocumentoBDD {
 			throw new KrakeDevException("Error al consultar. Detalle: " + e.getMessage());
 		}
 		return documentos;
+	}
+
+	public void insertar(TipoDocumento td) throws KrakeDevException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		try {
+			con = ConexionBDD.obtenerConexion();
+			ps = con.prepareStatement("insert into tipo_de_documentos(codigo, descripcion)" 
+			+ "values (?, ?);");
+			ps.setString(1, td.getCodigo());
+			ps.setString(2, td.getDescripcion());
+			ps.executeUpdate();
+		} catch (KrakeDevException e) {
+			e.printStackTrace();
+			throw e;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new KrakeDevException("Error al insertar. Detalle: " + e.getMessage());
+		}
 	}
 }
